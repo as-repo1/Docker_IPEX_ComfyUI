@@ -1,3 +1,7 @@
+# THIS REPOSITORY IS DISCONTINUED
+
+Intel's Extension for Pytorch has officially announced [its discontinuation](https://github.com/intel/intel-extension-for-pytorch/issues/867) so I am also announcing that as well for this repository. With the release of Pytorch 2.9 as of the time of writing this, you should be able to use the XPU flavor of the repository to do everything you need to run Pytorch and dependencies will also be subsequently installed through a package manager when you do that. This works for both Windows and Linux so it effectively replaces the main usage of this repository for me in the first place. Should you want to still containerize ComfyUI for Docker, I will suggest switching over to https://github.com/YanWenKun/ComfyUI-Docker and the XPU Dockerfiles he has. Thank you for everything, I hope this has been helpful during the early days of trying to get Intel GPU support working on ComfyUI for the last two years.
+
 # Stable Diffusion ComfyUI Docker/OCI Image for Intel Arc GPUs
 
 This Docker/OCI image is designed to run [ComfyUI](https://github.com/comfyanonymous/ComfyUI) inside a Docker/OCI container for Intel Arc GPUs. This work was based in large part on the work done by a Docker image made by nuullll [here](https://github.com/Nuullll/ipex-sd-docker-for-arc-gpu) for a different Stable Diffusion UI and the official Docker images from the Intel® Extension for PyTorch* xpu-main branch Docker images [here](https://github.com/intel/intel-extension-for-pytorch/tree/xpu-main/docker).
