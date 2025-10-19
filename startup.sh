@@ -28,12 +28,13 @@ fi
 if [ "$FirstLaunch" = "true" ]
 then
     echo "Installing ComfyUI Python dependencies."
-    python -m pip install torch==2.3.1+cxx11.abi torchvision==0.18.1+cxx11.abi torchaudio==2.3.1+cxx11.abi intel-extension-for-pytorch==2.3.110+xpu oneccl_bind_pt==2.3.100+xpu --extra-index-url https://pytorch-extension.intel.com/release-whl/stable/xpu/cn/
-    # Install dependency to make torch.compile work.
-    pip install --pre pytorch-triton-xpu==3.1.0+91b14bf559  --index-url https://download.pytorch.org/whl/nightly/xpu
+    python -m pip install uv
+    uv pip install dpcpp-cpp-rt==2025.0.4 mkl-dpcpp==2025.0.1 oneccl-devel==2021.14.1 impi-devel==2021.14.1 ruamel-yaml
+    uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/xpu
+    uv pip install intel-extension-for-pytorch==2.7.10+xpu oneccl_bind_pt==2.7.0+xpu --extra-index-url https://pytorch-extension.intel.com/release-whl/stable/xpu/us/
     # Comment out the above command and uncomment the following one instead if you are a user from the PRC.
-    #python -m pip install torch==2.3.1+cxx11.abi torchvision==0.18.1+cxx11.abi torchaudio==2.3.1+cxx11.abi intel-extension-for-pytorch==2.3.110+xpu oneccl_bind_pt==2.3.100+xpu --extra-index-url https://pytorch-extension.intel.com/release-whl/stable/xpu/cn/
-    pip install -r requirements.txt
+    #uv pip install intel-extension-for-pytorch==2.7.10+xpu oneccl_bind_pt==2.7.0+xpu --extra-index-url https://pytorch-extension.intel.com/release-whl/stable/xpu/cn/
+    uv pip install -r requirements.txt
 fi
 
 # Launch ComfyUI based on whether ipexrun is set to be used or not. Explicit string splitting is done by the shell here so shellcheck warning is ignored.
